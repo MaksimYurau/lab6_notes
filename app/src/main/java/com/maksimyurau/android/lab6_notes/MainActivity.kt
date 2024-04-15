@@ -5,17 +5,10 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.activity.compose.setContent
-import androidx.compose.material.Scaffold
-import androidx.compose.material.ScaffoldState
-import androidx.compose.material.rememberScaffoldState
-import androidx.compose.runtime.rememberCoroutineScope
-import com.maksimyurau.android.lab6_notes.ui.components.AppDrawer
-import com.maksimyurau.android.lab6_notes.ui.components.Note
-import com.maksimyurau.android.lab6_notes.routing.Screen
 import com.maksimyurau.android.lab6_notes.theme.NotesTheme
+import com.maksimyurau.android.lab6_notes.ui.components.screens.NotesScreen
 import com.maksimyurau.android.lab6_notes.viewmodel.MainViewModel
 import com.maksimyurau.android.lab6_notes.viewmodel.MainViewModelFactory
-import kotlinx.coroutines.launch
 
 /**
  * Main activity приложения.
@@ -35,25 +28,7 @@ class MainActivity : AppCompatActivity() {
 
         setContent {
             NotesTheme {
-                val coroutineScope = rememberCoroutineScope()
-                val scaffoldState: ScaffoldState = rememberScaffoldState()
-
-                Scaffold(
-                    scaffoldState = scaffoldState,
-                    drawerContent = {
-                        AppDrawer(
-                            currentScreen = Screen.Notes,
-                            closeDrawerAction = {
-                                coroutineScope.launch {
-                                    scaffoldState.drawerState.close()
-                                }
-                            }
-                        )
-                    },
-                    content = {
-                        Note()
-                    }
-                )
+                NotesScreen(viewModel = viewModel)
             }
         }
     }
