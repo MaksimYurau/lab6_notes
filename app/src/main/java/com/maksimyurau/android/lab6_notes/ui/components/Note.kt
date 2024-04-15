@@ -91,5 +91,12 @@ fun Note(
 @Preview
 @Composable
 private fun NotePreview() {
-    // Note()
+
+    Note(
+        note = NoteModel(
+            1,
+            "Заметка 1",
+            "Содержимое 1",
+            null)
+    )
 }
