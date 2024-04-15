@@ -7,6 +7,7 @@ import androidx.compose.material.icons.filled.List
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.ui.tooling.preview.Preview
 import com.maksimyurau.android.lab6_notes.model.NoteModel
 import com.maksimyurau.android.lab6_notes.ui.components.Note
 import com.maksimyurau.android.lab6_notes.ui.components.TopAppBar
@@ -53,4 +54,18 @@ private fun NotesList(
             )
         }
     }
+}
+
+@Preview
+@Composable
+private fun NotesListPreview() {
+    NotesList(
+        notes = listOf(
+            NoteModel(1, "Note 1", "Content 1", null),
+            NoteModel(2, "Note 2", "Content 2", false),
+            NoteModel(3, "Note 3", "Content 3", true)
+        ),
+        onNoteCheckedChange = {},
+        onNoteClick = {}
+    )
 }
