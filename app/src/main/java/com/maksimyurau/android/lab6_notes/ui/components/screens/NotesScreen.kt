@@ -36,3 +36,21 @@ fun NotesScreen(viewModel: MainViewModel) {
             }
         }
     }
+
+@Composable
+private fun NotesList(
+    notes: List<NoteModel>,
+    onNoteCheckedChange: (NoteModel) -> Unit,
+    onNoteClick: (NoteModel) -> Unit
+) {
+    LazyColumn {
+        items(count = notes.size) {noteIndex ->
+            val note = notes[noteIndex]
+            Note(
+                note = note,
+                onNoteClick = onNoteClick,
+                onNoteCheckedChange = onNoteCheckedChange
+            )
+        }
+    }
+}
